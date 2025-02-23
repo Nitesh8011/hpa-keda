@@ -1,8 +1,8 @@
----
-namespace: openshift-keda
+# ---
+# namespace: openshift-keda
 
-resources:
-  - namespace.yaml
-  # - operatorgroup.yaml
-  # - subscription.yaml
-  - kedacontroller.yaml
+# resources:
+#   - namespace.yaml
+#   - operatorgroup.yaml
+#   - subscription.yaml
+#   - kedacontroller.yaml

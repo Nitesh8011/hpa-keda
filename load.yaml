@@ -12,14 +12,14 @@ spec:
         env:
           - name: ROUTE
             value: http://svc-prometheus:8080
-        # generate moderate load of (5*10) per second for roughly 2000/(5*10) seconds
+        # generate moderate load of (2*10) per second for roughly 3000/(5*10) seconds
         args:
           - -c
           - "2"
           - -q
           - "10"
           - -n
-          - "4000"
+          - "3000"
           - "$(ROUTE)"
       restartPolicy: Never
   activeDeadlineSeconds: 120

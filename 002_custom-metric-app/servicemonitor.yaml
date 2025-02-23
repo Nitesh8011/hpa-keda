@@ -2,9 +2,9 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
-    k8s-app: prometheus-metrics-sm
-  name: prometheus-metrics-sm
-  namespace: openshift-keda
+    k8s-app: prometheus-metrics-monitor
+  name: prometheus-sm
+  namespace: keda-test
 spec:
   endpoints:
     - interval: 30s
@@ -15,4 +15,4 @@ spec:
       - keda-test
   selector:
     matchLabels:
-      app: prometheus-metrics
+      app: prometheus-metrics-app

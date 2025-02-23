@@ -2,14 +2,14 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: prometheus-route
   labels:
-    app: prometheus-metrics
+    app: prometheus-metrics-app
+  name: prometheus-metrics-app
 spec:
   port:
     targetPort: web
   to:
     kind: Service
-    name: svc-prometheus
+    name: prometheus-metrics-app
     weight: 100
   wildcardPolicy: None

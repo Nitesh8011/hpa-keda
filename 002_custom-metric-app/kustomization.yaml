@@ -1,7 +1,7 @@
 ---
 # https://github.com/rhobs/prometheus-example-app
 
-namespace: openshift-keda
+namespace: keda-test
 
 generatorOptions:
   disableNameSuffixHash: true
@@ -11,4 +11,5 @@ resources:
   - deployment.yaml
   - service.yaml
   - servicemonitor.yaml
+  # optional
   # - route.yaml

@@ -1,23 +1,23 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: prometheus-d
-  namespace: openshift-keda
+  name: prometheus-metrics-app
+  namespace: keda-test
   labels:
-    app: prometheus-metrics
+    app: prometheus-metrics-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: prometheus-metrics
+      app: prometheus-metrics-app
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: prometheus-metrics
+        app: prometheus-metrics-app
     spec:
       containers:
-        - name: prometheus-metrics
+        - name: prometheus-metrics-app
           image: 'ghcr.io/rhobs/prometheus-example-app:0.4.1'
           resources: {}
           terminationMessagePath: /dev/termination-log
@@ -26,7 +26,6 @@ spec:
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
-      securityContext: {}
       schedulerName: default-scheduler
   strategy:
     type: RollingUpdate

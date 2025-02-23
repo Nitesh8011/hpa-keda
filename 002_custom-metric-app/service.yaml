@@ -2,7 +2,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: svc-prometheus
-  namespace: openshift-keda
 spec:
   ports:
     - name: web
@@ -14,4 +13,4 @@ spec:
   ipFamilyPolicy: SingleStack
   sessionAffinity: None
   selector:
-    app: prometheus-metrics
+    app: prometheus-metrics-app
