@@ -1,0 +1,42 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: keda-hpa-test-hpa
+  namespace: keda-test
+  labels:
+    scaledobject.keda.sh/name: keda-hpa-test-hpa
+spec:
+  advanced:
+    horizontalPodAutoscalerConfig:
+      behavior:
+        scaleDown:
+          policies:
+            - periodSeconds: 10
+              type: Pods
+              value: 1
+          stabilizationWindowSeconds: 30
+        scaleUp:
+          policies:
+            - periodSeconds: 30
+              type: Pods
+              value: 1
+          stabilizationWindowSeconds: 0
+    scalingModifiers: {}
+  cooldownPeriod: 200
+  maxReplicaCount: 5
+  minReplicaCount: 1
+  pollingInterval: 30
+  scaleTargetRef:
+    kind: Deployment
+    name: keda-hpa-test-d
+  triggers:
+    - authenticationRef:
+        name: keda-trigger-auth-prometheus
+      metadata:
+        authModes: bearer
+        metricName: http_server_requests_seconds_count
+        namespace: keda-test
+        query: 'sum(rate(http_server_requests_seconds_count{job="keda-hpa-test"}[1m]))'
+        serverAddress: 'https://thanos-querier.openshift-monitoring.svc.cluster.local:9092'
+        threshold: '5'
+      type: prometheus

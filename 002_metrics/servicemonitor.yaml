@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    k8s-app: keda-hpa-test-sm
+  name: keda-hpa-test-sm
+  namespace: keda-test
+spec:
+  endpoints:
+    - interval: 30s
+      path: /actuator/prometheus
+      port: web
+      scheme: http
+  namespaceSelector:
+    matchNames:
+      - keda-test
+  selector:
+    matchLabels:
+      app: keda-hpa-test
