@@ -43,7 +43,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: keda-hpa-test
-  namespace: keda-test
   labels:
     app: keda-hpa-test
 spec:

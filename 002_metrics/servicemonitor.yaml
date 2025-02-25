@@ -4,7 +4,6 @@ metadata:
   labels:
     k8s-app: keda-hpa-test-sm
   name: keda-hpa-test-sm
-  namespace: keda-test
 spec:
   endpoints:
     - interval: 30s

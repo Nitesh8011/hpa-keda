@@ -2,7 +2,6 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   name: keda-hpa-test-hpa
-  namespace: keda-test
   labels:
     scaledobject.keda.sh/name: keda-hpa-test-hpa
 spec:
