@@ -12,7 +12,7 @@ spec:
         env:
           - name: ROUTE
             value: http://keda-hpa-test:8888
-        # generate moderate load of (2*10) per second for roughly 3000/(5*10) seconds
+        # generate moderate load of (2*10) per second for roughly 3000/(2*10) seconds
         args:
           - -c
           - "2"

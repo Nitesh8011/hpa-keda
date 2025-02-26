@@ -1,6 +1,6 @@
 FROM openjdk:21-jdk
 
-LABEL maintainer="Nitesh Kumar"
+LABEL maintainer="nitesh8011"
 
 COPY *.jar /app.jar
 
